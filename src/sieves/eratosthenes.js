@@ -10,13 +10,11 @@ async function sieveOfEratosthenes(n) {
 	for (let i = 2; i < Math.sqrt(n); i++) {
 		if (integers[i]) {
 			for (let j = Math.pow(i, 2); j <= n; j += i) {
-				if (integers[j]) {
-					await sleep();
+				await sleep();
 
-					integers[j] = false;
+				integers[j] = false;
 
-					colourCell(j, colour);
-				}
+				colourCell(j, colour);
 			}
 			colour = getNextColour(colour);
 		}
