@@ -2,17 +2,12 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
 
-  import Counter from './lib/Counter.svelte'
-  import Header from './lib/Header.svelte'
+  import Grid from './lib/Grid.svelte';
 </script>
 
 <main>
-  <Header title="Sieve"/>
-  <h1>Sieve</h1>
 
-  <div class="card">
-    <Counter />
-  </div>
+  <Grid/>
 
   <p>
     Built using:
