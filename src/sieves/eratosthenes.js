@@ -1,10 +1,8 @@
-import { DEFAULT, getNextColour, colourCell } from '../utilities/colours';
+import { getNextColour, colourCell } from '../utilities/colours';
 import { sleep } from '../utilities/sleep';
 
 async function sieveOfEratosthenes(n) {
 	const integers = new Array(n + 1).fill(true);
-
-	document.getElementById(String(1)).style.backgroundColor = DEFAULT;
 
 	let colour = getNextColour();
 	for (let i = 2; i < Math.sqrt(n); i++) {

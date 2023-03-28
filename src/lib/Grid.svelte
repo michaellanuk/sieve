@@ -1,5 +1,6 @@
 <script>
   import { sieveOfEratosthenes } from '../sieves/eratosthenes';
+  import { DEFAULT } from '../utilities/colours';
 
   export let max = 120;
 
@@ -13,6 +14,7 @@
 
   function handleSelect(event) {
     selectedSieve = event.target.value;
+    clearGrid();
   }
   
   function getGridItems() {
@@ -24,20 +26,30 @@
     return items;
   }
 
-  async function runSieve() {
-    // @ts-ignore
-    document.getElementById('run').disabled = true;
-
+  function clearGrid() {
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach((div) => {
       // @ts-ignore
       div.style.backgroundColor = '#ececec';
     });
+  }
+
+  async function runSieve() {
+    // @ts-ignore
+    document.getElementById('sieves').disabled = true;
+    // @ts-ignore
+    document.getElementById('run').disabled = true;
+
+    clearGrid();
+
+    document.getElementById(String(1)).style.backgroundColor = DEFAULT;
 
     await SIEVES[selectedSieve]();
 
     // @ts-ignore
-    document.getElementById('run').disabled = true;
+    document.getElementById('sieves').disabled = false;
+    // @ts-ignore
+    document.getElementById('run').disabled = false;
   }
 </script>
 
