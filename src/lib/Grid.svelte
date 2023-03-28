@@ -20,10 +20,14 @@
     for (let i = 1; i <= max; i++) {
       items.push(i);
     }
+
     return items;
   }
 
   async function runSieve() {
+    // @ts-ignore
+    document.getElementById('run').disabled = true;
+
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach((div) => {
       // @ts-ignore
@@ -31,6 +35,9 @@
     });
 
     await SIEVES[selectedSieve]();
+
+    // @ts-ignore
+    document.getElementById('run').disabled = true;
   }
 </script>
 
@@ -43,7 +50,7 @@
   <span class="arrow"></span>
 </div>
 
-<button type="submit" class="button" on:click={runSieve}>Run</button>
+<button type="submit" class="button" id="run" on:click={runSieve}>Run</button>
 <div class="grid">
   {#each getGridItems() as item}
     <div class="grid-item" id={String(item)}>{item}</div>
